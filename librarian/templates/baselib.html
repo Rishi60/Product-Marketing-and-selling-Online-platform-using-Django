@@ -1,0 +1,64 @@
+<html lang="en">
+	<head>
+{% load staticfiles %}
+
+<title>{% block title %}iMart-India's biggest Market{% endblock %}</title>
+<body background ="{% static "librarian/images/yo.jpg" %}"/>
+<body bgcolor="white" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#3333cc" vlink="#3333cc" alink="#3333cc" onLoad="newwin()">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#571B7E">
+
+        <tr align="center" >
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#571B7E" height="150">
+            <td>
+
+
+<div align="center"><font size="3" face="Arial, Helvetica, sans-serif"><font color="#FDEEF4"><b><font size="20">
+iMart-India's Online Market</font>
+<div align="left"><font size="3" face="Arial, Helvetica, sans-serif"><font color="BLUE"><b><font size="5">
+<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			</div>
+			<ul class="nav navbar-nav">
+<li class=""><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
+
+
+</ul>
+              			<ul class="nav navbar-nav navbar-right">
+			{% if user.is_authenticated %}
+				<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off"></span><b>&nbsp;&nbsp; Logout</b></a></li>
+			{% endif %}
+			</ul>
+		  </div>
+</div>
+                    </b>
+                    </font>
+                    </font>
+                </div>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+		</nav>
+
+		<style type="text/css">
+			html,
+			body {
+			  height:100%
+			}
+		</style>
+	</head>
+  <body>
+    <main>
+	<div class="container-fluid" style='margin-left:15px'>
+
+      {% block content %}
+      {% endblock %}
+	</div>
+	</main>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}        You Logged in to Imart{% endblock %}
+{% block content %}
+  <h1>Welcome {{ user.librarian.librarian_name }} (<small>ID: {{ user.username }}</small>)!</h1><hr>
+    <h2> You are Shopping on IMart</h2>
+    <h3>Order details</h3>
+    {% if not user.librarian.librarian_name %}
+       Please  login first to order
+    {% else %}
+     <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<table>
+<tr>
+
+    <th>Customer Name</th>
+    <th>item</th>
+    <th>Address</th>
+    <th>Phone No</th>
+</tr>
+
+      <tr>
+        <td>{{ d.a }}</td>
+          <td>{{ d.b }}</td>
+          <td>{{ d.c }}</td>
+           <td>{{ user.librarian.phone_number }}</td>
+
+      </tr>
+
+
+
+
+{% endif %}
+{% endblock %}

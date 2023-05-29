@@ -1,0 +1,23 @@
+{% extends "baselib.html" %}
+
+{% block content %}
+{% load static %}
+
+    <center>
+    <h1>iMart</h1>
+  <h2>Log in to IMArt</h2>
+    {% if form.errors %}
+        <p style="color: red">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    <form class="form" method="post" action="." >{% csrf_token %}
+        User Name:<br>
+        <input type="text" placeholder="Username" name="username"><br>
+        Password:<br>
+        <input type="password" placeholder="Password" name="password"><br>
+        <button type="submit">Login</button>
+          <button type="button" onclick="window.location.href='{% url 'signup' %}' ">New User</button>
+        <input type="hidden" name="next" value="/" />
+    </form>
+
+{% endblock %}

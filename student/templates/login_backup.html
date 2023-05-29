@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+  <h2>Log in to Attendance Portal</h2>
+  {% if form.errors %}
+    <p style="color: red">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}
+        {{ field }}<br>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        {% if field.help_text %}
+          <p><small style="color: grey">{{ field.help_text }}</small></p>
+        {% endif %}
+      </p>
+    {% endfor %}
+    <button type="submit" class="button button1"><b>Log in</b></button>
+	<br>
+    <a href="{% url 'signup' %}">Haven't registered yet? Sign up</a>
+  </form>
+  </center>
+{% endblock %}

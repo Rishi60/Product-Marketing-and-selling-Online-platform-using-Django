@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <body background="{% static " librarian/images/imart.png" %}"/>
+<center>
+  <h2>Log in to Attendance Portal</h2>
+    {% if form.errors %}
+        <p style="color: red">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    <form class="form" method="post" action="." >{% csrf_token %}
+        <input type="text" placeholder="Username" name="username">
+        <input type="password" placeholder="Password" name="password">
+        <button type="submit">Login</button>
+        <button type="button" onclick="window.location.href='{% url 'signup' %}' ">New User</button>
+        <input type="hidden" name="next" value="/" />
+    </form>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}Attendance Portal{% endblock %}</title>
+		<meta charset="utf-8" />
+		{% load staticfiles %}
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+				<a class= " navbar-brand" href = "{% url 'home'%}">Attendace Portal</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class=""><a href="/"><span class="glyphicon glyphicon-home"></span><b>&nbsp;&nbsp;Home</b></a></li>
+				<li class="active"><a href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span><b>&nbsp;&nbsp; Teacher</b></a></li>
+				<li class=""><a href="{% url 'home' %}"><span class="glyphicon glyphicon-user" ></span><b>&nbsp;&nbsp; Student</b></a></li>
+				
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off"></span><b>&nbsp;&nbsp; Logout</b></a></li>
+			</ul>
+		  </div>
+		</nav>
+
+		<style type="text/css">
+			html,
+			body {
+			  height:100%
+			}
+		</style>
+	</head>
+  <body>
+    <header>
+      <center>
+	  <center><h1>Teacher Sign-up Panel</h1><center>
+      {% if user.is_authenticated %}
+      <center><h4><a href="{% url 'logout' %}"><b>logout</b></a></h4></center>
+      {% else %}
+      <center><h4><a href="{% url 'login' %}"><b>login</b></a><h4> /<h4><a href="{% url 'signup' %}"><b>Sign-up</b></a></h4></center>
+      {% endif %}
+      <hr>
+    </header>
+    <main>
+	<center>
+      {% block content %}
+      {% endblock %}
+	</center>
+    </main>
+  </body>
+</html>

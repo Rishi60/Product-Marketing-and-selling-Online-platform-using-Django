@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}        You Logged in to Imart{% endblock %}
+{% block content %}
+{% if user.librarian.librarian_name %}
+    <div align="center">
+        <h1>You are now Logged In as:{{ user.librarian.librarian_name }} (<small>ID: {{ user.username }}</small>)</h1>
+    {% endif %}</div>    <h2> You can Shop on IMart</h2>
+    <h3>You can buy following from our site(SEARCHING RESULTS):-</h3>
+
+
+
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<table>
+<tr>
+
+    <th>Product</th>
+    <th>Company</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>BuyMenu</th>
+</tr>
+
+      <tr>
+        <td>{{ d.product }}</td>
+          <td>{{ d.company }}</td>
+          <td>{{ d.price }}</td>
+           <td>{{ d.category }}</td>
+          <td>{{ d.description }}</td>
+          {% if not user.librarian.librarian_name %}
+       Please  login first to order
+     {% else %}
+     <form class="form" method="post" action="{% url 'buy' %}" >{% csrf_token %}
+          <td><input type="text" placeholder="Confirm Name" name="cnf_item">
+              <td><input type="text" placeholder="Confirm User Name" name="use_name">
+             <td><input type="text" placeholder="Address" name="address">
+              <button type="Submit">Buy</button></td>
+     </form>
+    {% endif %}
+      </tr>
+
+</table>
+
+
+
+
+
+{% endblock %}
